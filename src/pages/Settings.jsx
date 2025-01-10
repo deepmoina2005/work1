@@ -1,8 +1,11 @@
+import SettingsSidebar from '@/webcomponents/settings/SettingsSidebar'
 import React from 'react'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <div>
+      <SettingsSidebar/>
+    </div>
   )
 }
 

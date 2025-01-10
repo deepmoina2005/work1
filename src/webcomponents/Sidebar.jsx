@@ -27,7 +27,7 @@ const Sidebar = () => {
     { name: "Goals", icon: <GoGoal />, link: "/goals" },
     { name: "To-Do Lists", icon: <LuListTodo />, link: "/todo-lists" },
     { name: "Memories", icon: <CiStickyNote />, link: "/memories", hasSubmenu: true },
-    { name: "Settings", icon: <IoSettingsOutline />, link: "/settings" },
+    { name: "Settings", icon: <IoSettingsOutline />, link: "/settings-account" },
     { name: "Subscription", icon: <MdOutlineRocketLaunch />, link: "/subscription" },
     { name: "Archive", icon: <BsArchive />, link: "/archive" },
     { name: "Insight", icon: <LiaSearchengin />, link: "/insight" },

@@ -12,6 +12,8 @@ import Subscription from './pages/Subscription'
 import Sidebar from './webcomponents/Sidebar'
 import GoalsShowPage from './pages/GoalsShowPage'
 import Vaults from './pages/Vaults'
+import AccountSettings from './pages/AccountSettings'
+import SubcriptionManagmentSettings from './pages/SubcriptionManagmentSettings'
 
 const App = () => {
   return (
@@ -32,6 +34,8 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/insight" element={<Insight />} />
           <Route path="/subscription" element={<Subscription />} />
+          <Route path="/settings-account" element={<AccountSettings />} />
+          <Route path='/settings-subscription' element={<SubcriptionManagmentSettings/>} />
         </Routes>
       </div>
     </div>
