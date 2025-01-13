@@ -6,20 +6,16 @@ import { IoNotificationsOutline, IoRocketOutline, IoSettingsOutline } from "reac
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { TbHeadset } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom";
-import ImageUpload from "../pop-up/ImageUpload"; // Import the ImageUpload component
+import ImageUpload from "../pop-up/ImageUpload";
 
 const SettingsSidebar = () => {
   const location = useLocation();
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;
 
-  const handleProfileClick = () => {
-    setIsModalOpen(true); // Open the modal when profile section is clicked
-  };
-
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false);
   };
 
   return (
@@ -35,7 +31,6 @@ const SettingsSidebar = () => {
         <ul className="space-y-4">
           <li
             className={`p-2 rounded-md cursor-pointer ${isActive("/settings-account") ? "bg-white" : ""}`}
-            onClick={handleProfileClick} // Open the modal on click
           >
             <Link to="/settings-account" className="flex items-center space-x-3">
               <CiUser className="text-lg" />
@@ -51,33 +46,33 @@ const SettingsSidebar = () => {
             </Link>
           </li>
           <li
-            className={`p-2 rounded-md cursor-pointer ${isActive("/settings/notifications") ? "bg-white" : ""}`}
+            className={`p-2 rounded-md cursor-pointer ${isActive("/settings-notification") ? "bg-white" : ""}`}
           >
-            <Link to="/settings/notifications" className="flex items-center space-x-3">
+            <Link to="/settings-notification" className="flex items-center space-x-3">
               <IoNotificationsOutline className="text-lg text-black" />
               <span className="text-gray-700 font-medium">Notifications</span>
             </Link>
           </li>
           <li
-            className={`p-2 rounded-md cursor-pointer ${isActive("/settings/preferences") ? "bg-white" : ""}`}
+            className={`p-2 rounded-md cursor-pointer ${isActive("/settings-preference") ? "bg-white" : ""}`}
           >
-            <Link to="/settings/preferences" className="flex items-center space-x-3">
+            <Link to="/settings-preference" className="flex items-center space-x-3">
               <FaListAlt className="text-lg text-black" />
               <span className="text-gray-700 font-medium">Preferences</span>
             </Link>
           </li>
           <li
-            className={`p-2 rounded-md cursor-pointer ${isActive("/settings/privacy") ? "bg-white" : ""}`}
+            className={`p-2 rounded-md cursor-pointer ${isActive("/settings-privacy") ? "bg-white" : ""}`}
           >
-            <Link to="/settings/privacy" className="flex items-center space-x-3">
+            <Link to="/settings-privacy" className="flex items-center space-x-3">
               <MdOutlinePrivacyTip className="text-lg text-black" />
               <span className="text-gray-700 font-medium">Privacy and Security</span>
             </Link>
           </li>
           <li
-            className={`p-2 rounded-md cursor-pointer ${isActive("/settings/help") ? "bg-white" : ""}`}
+            className={`p-2 rounded-md cursor-pointer ${isActive("/settings-help") ? "bg-white" : ""}`}
           >
-            <Link to="/settings/help" className="flex items-center space-x-3">
+            <Link to="/settings-help" className="flex items-center space-x-3">
               <TbHeadset className="text-lg text-black" />
               <span className="text-gray-700 font-medium">Help and Support</span>
             </Link>

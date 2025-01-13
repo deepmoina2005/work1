@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import SettingsSidebar from "@/components/settings/SettingsSidebar";
-import ImageUpload from "../components/pop-up/ImageUpload";
-import ChangePassword from "../components/pop-up/ChangePassword";
+import ImageUpload from "../../components/pop-up/ImageUpload";
+import ChangePassword from "../../components/pop-up/ChangePassword";
 
 const AccountSettings = () => {
   const [isPasswordPopupOpen, setIsPasswordPopupOpen] = useState(false);
