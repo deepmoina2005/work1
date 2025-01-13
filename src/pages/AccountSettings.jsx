@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BsUpload } from "react-icons/bs";
-import SettingsSidebar from "@/webcomponents/settings/SettingsSidebar";
-import ImageUpload from "../webcomponents/pop-up/ImageUpload";
-import ChangePassword from "../webcomponents/pop-up/ChangePassword";
+import SettingsSidebar from "@/components/settings/SettingsSidebar";
+import ImageUpload from "../components/pop-up/ImageUpload";
+import ChangePassword from "../components/pop-up/ChangePassword";
 
 const AccountSettings = () => {
   const [isPasswordPopupOpen, setIsPasswordPopupOpen] = useState(false);
@@ -36,7 +36,7 @@ const AccountSettings = () => {
             <input
               id="fullName"
               type="text"
-              className="w-[407px] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-[407px] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
               placeholder="Enter your full name"
             />
           </div>
@@ -47,7 +47,7 @@ const AccountSettings = () => {
             <input
               id="email"
               type="email"
-              className="w-[407px] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-[407px] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
               placeholder="Enter your email address"
             />
           </div>
@@ -57,7 +57,7 @@ const AccountSettings = () => {
             <label className="w-[150px] text-gray-700 font-medium">Time Zone</label>
             <select
               id="timezone"
-              className="w-[407px] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-[407px] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
             >
               <option value="UTC-5">UTC-5 (Eastern Time)</option>
               <option value="UTC-6">UTC-6 (Central Time)</option>

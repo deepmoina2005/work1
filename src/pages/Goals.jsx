@@ -3,8 +3,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { ArrowDownWideNarrow } from "lucide-react";
 import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import GoalsCard from '../webcomponents/card/GoalsCard';
-import CreateNewGoals from '../webcomponents/Goals/CreateNewGoals';
+import GoalsCard from '../components/card/GoalsCard';
+import CreateNewGoals from '../components/Goals/CreateNewGoals';
 import {
   Pagination,
   PaginationContent,

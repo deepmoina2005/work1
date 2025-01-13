@@ -1,8 +1,8 @@
-import ProgressBar from "@/webcomponents/dashboard/ProgressBar";
-import GoalProgressChart from "@/webcomponents/dashboard/GoalProgressChart";
-import StatCard from "@/webcomponents/dashboard/StatCard";
-import NotesCard from "@/webcomponents/dashboard/NotesCard";
-import CreateNewNotes from "@/webcomponents/dashboard/CreateNewNotes";
+import ProgressBar from "@/components/dashboard/ProgressBar";
+import GoalProgressChart from "@/components/dashboard/GoalProgressChart";
+import StatCard from "@/components/dashboard/StatCard";
+import NotesCard from "@/components/dashboard/NotesCard";
+import CreateNewNotes from "@/components/dashboard/CreateNewNotes";
 
 const Dashboard = () => {
   return (

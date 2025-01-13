@@ -1,4 +1,4 @@
-import SettingsSidebar from '@/webcomponents/settings/SettingsSidebar'
+import SettingsSidebar from '@/components/settings/SettingsSidebar'
 import React from 'react'
 
 const SubcriptionManagmentSettings = () => {

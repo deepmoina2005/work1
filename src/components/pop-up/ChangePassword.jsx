@@ -30,21 +30,21 @@ const ChangePassword = ({ closeModal }) => {
           <input
             type="password"
             placeholder="Old Password"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
           />
           <input
             type="password"
             placeholder="New Password"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
           />
           <input
             type="password"
             placeholder="Confirm New Password"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />

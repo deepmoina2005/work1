@@ -1,6 +1,6 @@
 import { Progress } from '@/components/ui/progress'
-import MemoriesTable from '@/webcomponents/table/MemoriesTable'
-import To_dosTable from '@/webcomponents/table/To-dosTable'
+import MemoriesTable from '@/components/table/MemoriesTable'
+import To_dosTable from '@/components/table/To-dosTable'
 import { CircleCheck, Tags } from 'lucide-react'
 import React, { useState } from 'react'
 import { CiCalendarDate } from 'react-icons/ci'
