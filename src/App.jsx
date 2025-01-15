@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Dashboard from './pages/Dashboard'
 import Goals from './pages/Goals'
 import FindMemory from './pages/Memories/FindMemory'
 import AddNewMemory from './pages/Memories/AddNewMemory'
@@ -18,6 +17,7 @@ import NotificationsSettings from './pages/settings/NotificationsSettings'
 import PerferencesSettings from './pages/settings/PerferencesSettings'
 import PrivacySecuritySettings from './pages/settings/PrivacySecuritySettings'
 import HelpandSupportSettings from './pages/settings/HelpandSupportSettings'
+import Home from './pages/Home'
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
       {/* Main content area */}
       <div className="flex-1 mt-2 ml-2">
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
           <Route path='/vaults' element={<Vaults/>} />
           <Route path='/goals-view' element={<GoalsShowPage/>}/>
           <Route path="/goals" element={<Goals />} />

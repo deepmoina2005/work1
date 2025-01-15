@@ -1,6 +1,4 @@
 import { Progress } from '@/components/ui/progress'
-import MemoriesTable from '@/components/table/MemoriesTable'
-import To_dosTable from '@/components/table/To-dosTable'
 import { CircleCheck, Tags } from 'lucide-react'
 import React, { useState } from 'react'
 import { CiCalendarDate } from 'react-icons/ci'
@@ -70,11 +68,6 @@ const GoalsShowPage = () => {
             {range}
           </button>
         ))}
-      </div>
-
-      <div className='mt-2 ml-6'>
-        {selectedTimeRange === "To-dos" && <To_dosTable />}
-        {selectedTimeRange === "Memories" && <MemoriesTable />}
       </div>
     </div>
   )

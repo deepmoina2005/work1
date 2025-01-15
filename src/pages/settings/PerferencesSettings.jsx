@@ -28,7 +28,7 @@ const PreferencesSettings = () => {
         </div>
 
         {/* Tabs Section */}
-          <Tabs defaultValue="calendar" className="w-[1000px]">
+          <Tabs defaultValue="calendar" className="w-[860px]">
             {/* Tabs Navigation */}
             <TabsList className="grid grid-cols-3 w-[300px] bg-white border border-gray-300 rounded-md">
               <TabsTrigger
@@ -145,32 +145,9 @@ const PreferencesSettings = () => {
               </div>
             </TabsContent>
             </from>
-            {/* Tabs Content */}
-            
-
-            {/* Tabs Content memories */}
-            <TabsContent value="calendar">
-              <div  className="mt-6 space-y-52 space-x-[580px]">
-              {/* Notification Preferences Section */}
-              <div className="flex justify-between items-center">
-                <Label htmlFor="notification-method" className="text-sm font-medium text-gray-700">
-                  <h2 className="text-lg">Remind me to take notes</h2>
-                </Label>
-                <Select>
-                  <SelectTrigger className="w-[419px] bg-white rounded-md border border-gray-300">
-                    <SelectValue placeholder="Select an option" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="30min-after">30 min after start</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
-              </div>
-            </TabsContent>
-
+           
             {/* Tabs Content Tasks */}
+            <from>
             <TabsContent value="tasks" className="mt-6 ">
               <h2 className="text-[14px] font-bold">Import Folders</h2>
               <p className="text-[12px]">Tasks you create of a note will be saved in the selected location by default.</p>
@@ -201,6 +178,7 @@ const PreferencesSettings = () => {
               <p className="text-[12px]">Automatically set reminders when you add a due date and time to a task.</p>
             </div>
             </TabsContent>
+            </from>
           </Tabs>
       </div>
     </div>

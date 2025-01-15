@@ -12,6 +12,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { LiaSearchengin } from "react-icons/lia";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { ChartLine } from "lucide-react";
 
 const Sidebar = () => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
@@ -22,11 +23,12 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { name: "Dashboard", icon: <HiOutlineHome />, link: "/" },
+    { name: "Home", icon: <HiOutlineHome />, link: "/" },
     { name: "Vaults", icon: <HiOutlineHome />, link: "/vaults" },
     { name: "Goals", icon: <GoGoal />, link: "/goals" },
     { name: "To-Do Lists", icon: <LuListTodo />, link: "/todo-lists" },
     { name: "Memories", icon: <CiStickyNote />, link: "/memories", hasSubmenu: true },
+    { name: "Review", icon: <ChartLine />, link: "/review" },
     { name: "Settings", icon: <IoSettingsOutline />, link: "/settings-account" },
     { name: "Subscription", icon: <MdOutlineRocketLaunch />, link: "/subscription" },
     { name: "Archive", icon: <BsArchive />, link: "/archive" },
