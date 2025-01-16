@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoGoal } from "react-icons/go";
 import { LuListTodo } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -9,12 +9,13 @@ import { HiOutlineHome } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CiStickyNote } from "react-icons/ci";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { LiaSearchengin } from "react-icons/lia";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { ChartLine } from "lucide-react";
+import { ChartLine, Circle } from "lucide-react";
 
 const Sidebar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -24,10 +25,24 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Home", icon: <HiOutlineHome />, link: "/" },
-    { name: "Vaults", icon: <HiOutlineHome />, link: "/vaults" },
+    { name: "Vaults", icon: <Circle />, link: "/vaults" },
     { name: "Goals", icon: <GoGoal />, link: "/goals" },
     { name: "To-Do Lists", icon: <LuListTodo />, link: "/todo-lists" },
-    { name: "Memories", icon: <CiStickyNote />, link: "/memories", hasSubmenu: true },
+    {
+      name: "Memories",
+      icon: <CiStickyNote />,
+      link: "/memories",
+      hasSubmenu: true,
+      submenuItems: [
+        { name: "Find Memory", link: "/find-memory", icon: <CiStickyNote /> },
+        {
+          name: "Add New Memory",
+          link: "/add-new-memory",
+          icon: <AiOutlinePlus className="text-blue-600" />,
+          textClass: "text-blue-600",
+        },
+      ],
+    },
     { name: "Review", icon: <ChartLine />, link: "/review" },
     { name: "Settings", icon: <IoSettingsOutline />, link: "/settings-account" },
     { name: "Subscription", icon: <MdOutlineRocketLaunch />, link: "/subscription" },
@@ -75,74 +90,80 @@ const Sidebar = () => {
 
       {/* Menu */}
       <nav className="flex-grow overflow-auto block">
-        <ul className="space-y-2 p-4">
-          {filteredMenuItems.map((item) => (
-            <li key={item.name} className="relative">
-              {item.hasSubmenu ? (
-                <div>
-                  {/* Parent Menu Item */}
-                  <button
-                    onClick={() => toggleSubmenu(item.name)}
-                    className={`flex items-center justify-between w-full px-4 py-2 rounded ${
-                      activeSubmenu === item.name
-                        ? "bg-slate-300 font-semibold"
-                        : "hover:bg-slate-300"
-                    }`}
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="text-[16px]">{item.icon}</span>
-                      <span>{item.name}</span>
-                    </span>
-                    <span>
-                      {activeSubmenu === item.name ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                    </span>
-                  </button>
+        <div className="space-y-2 p-4">
+          {filteredMenuItems.map((item) => {
+            const isActiveParent =
+              location.pathname === item.link ||
+              (item.hasSubmenu &&
+                item.submenuItems.some((subItem) => location.pathname === subItem.link));
 
-                  {/* Submenu */}
-                  <ul
-                    className={`ml-6 mt-2 space-y-1 ${
-                      activeSubmenu === item.name ? "block" : "hidden"
+            return (
+              <div key={item.name} className="relative">
+                {item.hasSubmenu ? (
+                  <div>
+                    {/* Parent Menu Item */}
+                    <button
+                      onClick={() => navigate(item.link)}
+                      className={`flex items-center justify-between w-full px-4 py-2 rounded ${
+                        isActiveParent ? "bg-[#F3F3F3] font-semibold" : "hover:bg-[#F3F3F3]"
+                      }`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="text-[16px]">{item.icon}</span>
+                        <span>{item.name}</span>
+                      </span>
+                      <span
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleSubmenu(item.name);
+                        }}
+                      >
+                        {activeSubmenu === item.name ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                      </span>
+                    </button>
+
+                    {/* Submenu Items */}
+                    <div
+                      className={`ml-6 mt-2 space-y-1 ${
+                        activeSubmenu === item.name ? "block" : "hidden"
+                      }`}
+                    >
+                      {item.submenuItems.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.link}
+                          className={`flex items-center gap-2 px-4 py-2 rounded hover:bg-[#F3F3F3] hover:font-semibold ${
+                            subItem.textClass || ""
+                          } ${location.pathname === subItem.link ? "bg-[#F3F3F3] font-semibold" : ""}`}
+                        >
+                          {subItem.icon}
+                          <span className="text-[12px]">{subItem.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    to={item.link}
+                    className={`flex items-center gap-2 px-4 py-2 rounded ${
+                      location.pathname === item.link ? "bg-[#F3F3F3] font-semibold" : "hover:bg-[#F3F3F3]"
                     }`}
                   >
-                    <li>
-                      <Link
-                        to="/find-memory"
-                        className="flex items-center gap-2 px-4 py-2 rounded hover:bg-slate-300 hover:font-semibold"
-                      >
-                        <CiStickyNote className="w-5 h-5" />
-                        <span className="text-[12px]">Find Memory</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/add-new-memory"
-                        className="flex items-center gap-2 px-4 py-2 rounded hover:bg-slate-300 hover:font-semibold"
-                      >
-                        <AiOutlinePlus className="w-5 h-5 text-blue-600" />
-                        <span className="text-[12px] text-blue-600">Add New Memory</span>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              ) : (
-                <Link
-                  to={item.link}
-                  className="flex items-center gap-2 px-4 py-2 rounded hover:bg-slate-300 hover:font-semibold"
-                >
-                  {item.icon}
-                  {item.name}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
+                    {item.icon}
+                    {item.name}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </nav>
 
       {/* Footer */}
       <div className="p-4 text-center text-gray-600 border-t border-gray-300">
         <div className="flex justify-center items-center gap-1 mb-2">
           <img
-            src="https://image.lexica.art/full_webp/71d66e6a-0e79-4749-af89-7f025146df91" // Replace with actual profile picture URL
+            src="https://image.lexica.art/full_webp/71d66e6a-0e79-4749-af89-7f025146df91"
             alt="User Avatar"
             className="w-6 h-6 rounded-full object-cover border-2 border-gray-600"
           />

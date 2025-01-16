@@ -14,7 +14,7 @@ const GoalsCard = ({ goal }) => {
     tasksCompleted = 0,
     totalTasks = 5,
     type = "Yearly",
-    description = "The sun dipped below the horizon, painting the sky in hues of orange and pink.  the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below   a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled the start of an evening s the start of an evening symphony, a harmonious The sun dipped below the horizon, painting the sky in hues of orange and pink.  the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below   a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled the start of an evening s the start of an evening symphony, a harmonious melody of life continuing its timeless rhythm. melody of life continuing its timeless rhythm.",
+    description = "The sun dipped below the horizon, painting the sky in hues of orange and pink.  the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below   a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled the start of an evening s the start of an evening symphony, a harmonious The sun dipped below the horizon, painting the sky in hues of orange and pink.  the horizon, painting the sky in hues of orange and pink.",
   } = goal || {};
 
   return (
@@ -25,23 +25,17 @@ const GoalsCard = ({ goal }) => {
           <div className="flex items-center gap-4">
             <GoGoal className="text-gray-600 text-3xl" />
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center">
                 <h1 className="text-xl font-semibold">{title}</h1>
-                <span
-                  className={`border px-3 py-1 rounded-md text-xs capitalize ${
-                    priority === "high"
-                      ? "border-red-500 text-red-500"
-                      : "border-green-500 text-green-500"
-                  }`}
-                >
+                <span className="border border-black px-3 py-1 rounded-md text-xs capitalize mr-2">
                   {priority}
                 </span>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <GoPencil className="text-black hover:text-blue-500 cursor-pointer text-lg" />
-            <RiDeleteBin6Line className="text-black hover:text-red-500 cursor-pointer text-lg" />
+            <GoPencil className="text-[#000000] hover:text-blue-500 cursor-pointer text-lg" />
+            <RiDeleteBin6Line className="text-[#000000] hover:text-red-500 cursor-pointer text-lg" />
           </div>
         </div>
 
