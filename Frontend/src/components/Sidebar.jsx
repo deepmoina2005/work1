@@ -4,14 +4,13 @@ import { GoGoal } from "react-icons/go";
 import { LuListTodo } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineRocketLaunch } from "react-icons/md";
-import { BsArchive } from "react-icons/bs";
+import { BsArchive, BsShieldLock } from "react-icons/bs";
 import { HiOutlineHome } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CiStickyNote } from "react-icons/ci";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoIosSearch, IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { LiaSearchengin } from "react-icons/lia";
-import { ChartLine, Circle } from "lucide-react";
+import { Bot, ChartLine } from "lucide-react";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -25,7 +24,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Home", icon: <HiOutlineHome />, link: "/" },
-    { name: "Vaults", icon: <Circle />, link: "/vaults" },
+    { name: "Vaults", icon: <BsShieldLock />, link: "/vaults" },
     { name: "Goals", icon: <GoGoal />, link: "/goals" },
     { name: "To-Do Lists", icon: <LuListTodo />, link: "/todo-lists" },
     {
@@ -45,9 +44,9 @@ const Sidebar = () => {
     },
     { name: "Review", icon: <ChartLine />, link: "/review" },
     { name: "Settings", icon: <IoSettingsOutline />, link: "/settings-account" },
-    { name: "Subscription", icon: <MdOutlineRocketLaunch />, link: "/subscription" },
     { name: "Archive", icon: <BsArchive />, link: "/archive" },
-    { name: "Insight", icon: <LiaSearchengin />, link: "/insight" },
+    { name: "Subscription", icon: <MdOutlineRocketLaunch />, link: "/subscription" },
+    { name: "Coach Becky", icon: <Bot />, link: "/insight" },
   ];
 
   const filteredMenuItems = menuItems.filter((item) =>
@@ -61,9 +60,9 @@ const Sidebar = () => {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <img
-              src="https://image.lexica.art/full_webp/71d66e6a-0e79-4749-af89-7f025146df91"
+              src="https://image.lexica.art/full_webp/0141d1f8-c79e-45da-8644-08f40a167e2f"
               alt="User Avatar"
-              className="w-10 h-10 rounded-full object-cover border border-gray-600"
+              className="w-10 h-9 rounded-full object-cover"
             />
             <div className="text-black">
               <h3 className="text-[16px] font-semibold m-0 p-0">Sourabh Ghosh</h3>
