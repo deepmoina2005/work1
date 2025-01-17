@@ -20,6 +20,7 @@ import HelpandSupportSettings from './pages/settings/HelpandSupportSettings';
 import Home from './pages/Home';
 import Memories from './pages/Memories';
 import MobileMenu from './components/MobileMenu';
+import VaultViewPage from './pages/VaultViewPage';
 
 const App = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/todo-lists" element={<ToDoLists />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/vault-view" element={<VaultViewPage />} />
           <Route path="/insight" element={<Insight />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/settings-account" element={<AccountSettings />} />
