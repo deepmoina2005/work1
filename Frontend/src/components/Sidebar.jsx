@@ -54,7 +54,9 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="w-64 h-screen bg-white text-black flex flex-col rounded-lg mt-3 ml-3">
+    <div
+      className="fixed mt-2 left-0 w-64 h-screen bg-white text-black flex flex-col rounded-lg shadow-md"
+    >
       {/* User Profile */}
       <div className="p-4 text-lg font-bold">
         <div className="flex items-center justify-between space-x-4">
@@ -88,7 +90,7 @@ const Sidebar = () => {
       </div>
 
       {/* Menu */}
-      <nav className="flex-grow overflow-auto block">
+      <nav className="flex-grow overflow-auto">
         <div className="space-y-2 p-4">
           {filteredMenuItems.map((item) => {
             const isActiveParent =

@@ -1,15 +1,14 @@
+import GoalsTable from '@/components/Goals/GoalsTable'
 import { Progress } from '@/components/ui/progress'
-import { CircleCheck, Tags } from 'lucide-react'
-import React, { useState } from 'react'
+import { CircleCheck } from 'lucide-react'
 import { CiCalendarDate } from 'react-icons/ci'
 import { GoBell, GoGoal } from 'react-icons/go'
 import { MdArrowForwardIos } from 'react-icons/md'
 
 const GoalsShowPage = () => {
-  const [selectedTimeRange, setSelectedTimeRange] = useState("To-dos");
 
   return (
-    <div className='mt-1 mr-3 h-[955px] bg-white rounded-sm'>
+    <div className='m-2 min-h-screen bg-white rounded-sm'>
       <div className="flex items-center gap-2">
         <div className='flex items-center gap-2 mt-6 ml-6'>
           <GoGoal className="w-[19px] h-[19px]" />
@@ -56,18 +55,8 @@ const GoalsShowPage = () => {
         <Progress className='w-[432px] h-[7px]' value={10} />
       </div>
 
-      <div className="flex rounded-md border border-[#D7D7D7] w-[219px] h-[44px] mt-9 ml-6">
-        {["To-dos", "Memories"].map((range) => (
-          <button
-            key={range}
-            onClick={() => setSelectedTimeRange(range)}
-            className={`rounded-md font-medium w-[106px] m-1 ${
-              selectedTimeRange === range ? "bg-[#F3F3F3] text-gray-900" : "text-gray-900"
-            } focus:outline-none`}
-          >
-            {range}
-          </button>
-        ))}
+      <div className="flex mt-9 ml-6">
+        <GoalsTable/>
       </div>
     </div>
   )

@@ -68,10 +68,10 @@ const GoalsCard = ({ goal }) => {
         {/* Progress */}
         <div className="mt-2">
           <p className="text-sm text-gray-600 font-medium">Progress Status</p>
-          <div className="flex justify-between items-center text-lg font-semibold text-gray-800">
+          <div className="flex justify-between items-center text-lg font-semibold text-[#4CAF50]">
             <span>{progress}%</span>
           </div>
-          <Progress value={progress} className="mt-2 h-3 rounded-md bg-[#D9D9D9]" />
+          <Progress value={progress} className="mt-2 h-3 rounded-md bg-[#BEE6C0]" />
         </div>
       </div>
     </Link>
