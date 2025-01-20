@@ -59,9 +59,9 @@ const Home = () => {
   const handleModalClose = () => setIsPopupOpen(false); // Close modal
 
   return (
-    <div className="mt-2 ml-4 mr-4 mb-3">
+    <div className="m-8">
       {/* Greeting Section */}
-      <div className="flex flex-col items-start gap-1 pt-6">
+      <div className="flex flex-col items-start gap-1">
         <p className="text-[24px] font-medium text-[#393939]">
           Hello Sourabh Ghosh!
         </p>

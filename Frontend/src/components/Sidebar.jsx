@@ -10,7 +10,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { CiStickyNote } from "react-icons/ci";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoIosSearch, IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { Bot, ChartLine } from "lucide-react";
+import { Bot} from "lucide-react";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -42,7 +42,6 @@ const Sidebar = () => {
         },
       ],
     },
-    { name: "Review", icon: <ChartLine />, link: "/review" },
     { name: "Settings", icon: <IoSettingsOutline />, link: "/settings-account" },
     { name: "Archive", icon: <BsArchive />, link: "/archive" },
     { name: "Subscription", icon: <MdOutlineRocketLaunch />, link: "/subscription" },
