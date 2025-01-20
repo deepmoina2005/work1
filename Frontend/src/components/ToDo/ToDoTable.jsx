@@ -3,6 +3,7 @@ import { Checkbox } from "../ui/checkbox";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { BsSliders } from "react-icons/bs";
 import { Ellipsis } from "lucide-react";
+import PropTypes from 'prop-types';
 
 const ToDoTable = ({ 
   todos = [
@@ -141,6 +142,17 @@ const ToDoTable = ({
       </Table>
     </div>
   );
+};
+ToDoTable.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      duedate: PropTypes.string.isRequired,
+      memory: PropTypes.node.isRequired,
+      impact: PropTypes.string.isRequired,
+      goal: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default ToDoTable;

@@ -55,7 +55,7 @@ const Goal = () => {
       totalTasks: 5,
       type: "Weekly",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem the esse iusto odio maiores! Odio, tempora earum.",
     },
     {
       title: "Read 12 Books",

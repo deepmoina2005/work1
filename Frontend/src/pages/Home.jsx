@@ -1,10 +1,13 @@
 import { useState } from "react"; // Import useState for managing state
 import { Progress } from "@/components/ui/progress";
-import { ChevronDown, ListTodo, StickyNote } from "lucide-react";
+import { ChevronDown, CopyPlus, ListTodo, StickyNote } from "lucide-react";
 import { BsCircle } from "react-icons/bs";
 import { GoGoal } from "react-icons/go";
 import GoalsCard from "@/components/card/GoalsCard";
 import { useNavigate } from "react-router-dom";
+import CreateNewGoals from "@/components/Goals/CreateNewGoals";
+import ToDoTable from "@/components/ToDo/ToDoTable";
+import MemoryTable from "@/components/Memory/MemoriesTable";
 
 const Home = () => {
   const [isWidgetVisible, setIsWidgetVisible] = useState(true);
@@ -14,10 +17,51 @@ const Home = () => {
     navigate("/goals");
   };
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const goals = [
+    {
+      title: "Learn New Language",
+      date: "12/22/2024",
+      progress: 50,
+      priority: "high",
+      tasksCompleted: 3,
+      totalTasks: 5,
+      type: "Yearly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Achieve Fitness Goals",
+      date: "11/15/2024",
+      progress: 10,
+      priority: "medium",
+      tasksCompleted: 1,
+      totalTasks: 5,
+      type: "Monthly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Complete Project",
+      date: "10/30/2024",
+      progress: 75,
+      priority: "high",
+      tasksCompleted: 7,
+      totalTasks: 5,
+      type: "Weekly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+  ];
+
+  const handleCreateNewGoal = () => setIsPopupOpen(true); // Open modal
+  const handleModalClose = () => setIsPopupOpen(false); // Close modal
+
   return (
     <div className="mt-2 ml-4 mr-4 mb-3">
       {/* Greeting Section */}
-      <div className="flex flex-col items-start gap-1">
+      <div className="flex flex-col items-start gap-1 pt-6">
         <p className="text-[24px] font-medium text-[#393939]">
           Hello Sourabh Ghosh!
         </p>
@@ -83,8 +127,8 @@ const Home = () => {
           <h1 className="text-[24px] font-semibold ml-4 mt-2 text-gray-800">
             Pending Todos
           </h1>
-          <p className="text-[48px] ml-4 font-bold text-gray-900">0</p>
-          <p className="text-[14px] ml-4 text-blue-500">0 from last month</p>
+          <p className="text-[48px] ml-4 font-bold text-gray-900">20</p>
+          <p className="text-[14px] ml-4 text-blue-500">-10 from last month</p>
         </div>
 
         {/* Complete Todos Card */}
@@ -92,8 +136,8 @@ const Home = () => {
           <h1 className="text-[24px] font-semibold ml-4 mt-2 text-gray-800">
             Completed Todos
           </h1>
-          <p className="text-[48px] ml-4 font-bold text-gray-900">0</p>
-          <p className="text-[14px] ml-4 text-blue-500">0 from last month</p>
+          <p className="text-[48px] ml-4 font-bold text-gray-900">09</p>
+          <p className="text-[14px] ml-4 text-blue-500">+2 from last month</p>
         </div>
 
         {/* Completed Goals Card */}
@@ -101,35 +145,72 @@ const Home = () => {
           <h1 className="text-[24px] font-semibold ml-4 mt-2 text-gray-800">
             Completed Goals
           </h1>
-          <p className="text-[48px] font-bold ml-4 text-gray-900">0</p>
-          <p className="text-[14px] text-blue-500 ml-4">0 from last month</p>
+          <p className="text-[48px] font-bold ml-4 text-gray-900">18</p>
+          <p className="text-[14px] text-blue-500 ml-4">+11 from last month</p>
         </div>
       </div>
 
       {/* Top Todos For Today */}
-      <div className="bg-white rounded-md mt-8 p-4 shadow-md h-[285px]">
-        <div className="border-b border-gray-300 pb-2">
+      <div className="bg-white rounded-md mt-8 p-4 shadow-md">
+        <div className="flex items-center justify-between px-8 pt-4">
           <h1 className="text-black text-[20px] font-semibold">
             Top Todos for Today
           </h1>
+
+          {/* Create Goal Button */}
+          <button
+            className="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium"
+            onClick={handleCreateNewGoal}
+          >
+            <CopyPlus className="text-[20px]" />
+            <span>Create Todo</span>
+          </button>
+        </div>
+
+        {/* Modal Popup */}
+        {isPopupOpen && (
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-[100vh] max-h-min">
+              <CreateNewGoals onClose={handleModalClose} />
+            </div>
+          </div>
+        )}
+
+        {/* ToDo Table Component */}
+        <div className="py-3 px-4">
+          <ToDoTable />
         </div>
       </div>
 
-      {/* Top Todos For Today */}
-      <div className="bg-white rounded-md mt-8 p-4 shadow-md h-[1280px] lg:h-[500px]">
-        <div className="border-b border-gray-300 pb-2">
+      {/* Top Goals For Today */}
+      <div className="bg-white rounded-md mt-8 p-4 shadow-md">
+        <div className="border-b border-gray-300 pb-2 items-center justify-between flex">
           <h1 className="text-black text-[20px] font-semibold">
             Top Goals for Today
           </h1>
-        </div>
-        <div className="flex flex-col">
-          {/* Row for Goals Cards */}
-          <div className="lg:flex lg:justify-between flex flex-col lg:flex-row mt-4 gap-4">
-            <GoalsCard />
-            <GoalsCard />
-            <GoalsCard />
+          <div className="flex flex-row justify-between mb-2">
+            {isPopupOpen && (
+              <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
+                <div className="bg-white p-6 rounded-lg shadow-lg w-[100vh] max-h-min">
+                  <CreateNewGoals onClose={handleModalClose} />
+                </div>
+              </div>
+            )}
+            <button
+              className="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium"
+              onClick={handleCreateNewGoal}
+            >
+              <CopyPlus className="text-[20px]" />
+              <span>Create Goal</span>
+            </button>
           </div>
-          {/* View More Section */}
+        </div>
+        <div className="px-7 mt-4 mb-2">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+            {goals.map((goal, index) => (
+              <GoalsCard key={index} goal={goal} />
+            ))}
+          </div>
           <div className="mt-3 flex justify-end items-center">
             <button
               onClick={handleViewMoreClick}
@@ -143,11 +224,34 @@ const Home = () => {
       </div>
 
       {/* Top Todos For Today */}
-      <div className="bg-white rounded-md mt-8 p-4 shadow-md h-[285px]">
-        <div className="border-b border-gray-300 pb-2">
+      <div className="bg-white rounded-md mt-8 p-4 shadow-md">
+        <div className="flex items-center justify-between px-8 pt-4">
           <h1 className="text-black text-[20px] font-semibold">
-            Top Todos for Today
+            Recent Memories
           </h1>
+
+          {/* Create Goal Button */}
+          <button
+            className="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium"
+            onClick={handleCreateNewGoal}
+          >
+            <CopyPlus className="text-[20px]" />
+            <span>Create Memory</span>
+          </button>
+        </div>
+
+        {/* Modal Popup */}
+        {isPopupOpen && (
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-[100vh] max-h-min">
+              <CreateNewGoals onClose={handleModalClose} />
+            </div>
+          </div>
+        )}
+
+        {/* ToDo Table Component */}
+        <div className="py-3 px-4">
+          <MemoryTable />
         </div>
       </div>
     </div>

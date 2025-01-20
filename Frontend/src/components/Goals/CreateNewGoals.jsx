@@ -35,18 +35,18 @@ const CreateNewGoals = ({ onClose }) => {
 
   return (
     <div className="w-full p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold text-gray-900">Create New Goal</h2>
+      <div className="flex justify-between items-center mb-1">
+        <h2 className="text-2xl font-semibold text-gray-800">Create New Goal</h2>
         <button
           onClick={onClose} // Close modal when clicked
           className="text-gray-500 hover:text-gray-700"
         >
-          <MdClose size={24} /> {/* Render the close icon */}
+          <MdClose size={28} /> {/* Render the close icon */}
         </button>
       </div>
 
-      <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+      <div className="border-t border-gray-150">
+        <label className="block mt-4 text-sm font-medium text-gray-700 mb-1">
           Goal Title
         </label>
         <input
@@ -91,10 +91,11 @@ const CreateNewGoals = ({ onClose }) => {
           Start Date
         </label>
         <input
-          type="date"
+          type="text"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
           className="w-full border border-gray-300 rounded-md p-2"
+          placeholder="Enter your due date"
         />
       </div>
 
