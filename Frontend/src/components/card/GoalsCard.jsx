@@ -14,12 +14,16 @@ const GoalsCard = ({ goal }) => {
     tasksCompleted = 0,
     totalTasks = 5,
     type = "Yearly",
-    description = "The sun dipped below the horizon, painting the sky in hues of orange and pink.  the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below   a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled  sun dipped below the horizon, painting the sky in hues of orange and pink.  a harmonious melody of life continuing its timeless rhythm. The faint chirping of crickets signaled the start of an evening s the start of an evening symphony, a harmonious The sun dipped below the horizon, painting the sky in hues of orange and pink.  the horizon, painting the sky in hues of orange and pink.",
+    description = "The sun dipped below the horizon, painting the sky in hues of orange and pink.",
   } = goal || {};
+
+  // Define color based on progress value
+  const progressColor = progress === 0 ? "text-gray-800" : "text-[#4CAF50]";
+  const progressBarColor = progress === 0 ? "bg-gray-400" : "bg-[#4CAF50]";
 
   return (
     <Link to="/goals-view">
-      <div className="bg-white shadow-md rounded-lg p-6 border text-gray-700 flex flex-col gap-5 hover:shadow-lg transition-shadow duration-200">
+      <div className="bg-white shadow-md rounded-lg h-96 p-6 border text-gray-700 flex flex-col gap-5 hover:shadow-lg hover:border hover:border-black transition-shadow duration-200 mb-0">
         {/* Header */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -27,7 +31,7 @@ const GoalsCard = ({ goal }) => {
             <div>
               <div className="flex items-center">
                 <h1 className="text-xl font-semibold">{title}</h1>
-                <span className="border border-black px-3 py-1 rounded-md text-xs capitalize mr-2">
+                <span className="border border-black px-3 py-1 rounded-md text-xs capitalize ml-3">
                   {priority}
                 </span>
               </div>
@@ -41,20 +45,36 @@ const GoalsCard = ({ goal }) => {
 
         {/* Date */}
         <div className="ml-12">
-        <p className="text-sm text-[#393939] flex items-center gap-1">
-          <Calendar className="text-[#393939] h-4 w-4" />
-          {date}
-        </p>
+          <p className="text-sm text-[#393939] flex items-center gap-1">
+            <Calendar className="text-[#393939] h-4 w-4" />
+            {date}
+          </p>
         </div>
 
         {/* Task Status */}
         <div className="flex flex-col gap-2 ml-12">
+          {/* Task Completion */}
           <div className="flex items-center bg-blue-200 rounded-md h-[25px] w-[60px] text-sm font-medium border text-gray-700 gap-0.5">
-            <span className="flex gap-2"><CircleCheck className="w-4 h-4 ml-2 mt-0.5 text-blue-600" />
-            <p className="text-blue-600">
-              {tasksCompleted}/{totalTasks}
-            </p> <HiOutlineBell className="ml-2 w-[24px] h-[24px]"/></span>
+            <span className="flex gap-4">
+              <div className="flex flex-row items-center gap-1">
+              <CircleCheck
+                className="h-4 mt-0.5 text-blue-600"
+                aria-label="Task Completed Icon"
+              />
+              <p className="text-blue-600">
+                {tasksCompleted}/{totalTasks}
+              </p>
+              </div>
+              <div className="flex items-center ">
+              <HiOutlineBell
+                className="w-[18px] h-[18px]"
+                aria-label="Notification Icon"
+              />
+              </div>
+            </span>
           </div>
+
+          {/* Type Badge */}
           <span className="bg-blue-600 text-white px-3 py-1 rounded-sm text-sm text-center w-20">
             {type}
           </span>
@@ -68,10 +88,15 @@ const GoalsCard = ({ goal }) => {
         {/* Progress */}
         <div className="mt-2">
           <p className="text-sm text-gray-600 font-medium">Progress Status</p>
-          <div className="flex justify-between items-center text-lg font-semibold text-[#4CAF50]">
-            <span>{progress}%</span>
+          <div className="flex justify-between items-center text-lg font-semibold">
+            <span className={`text-3xl font-bold ${progressColor}`}>
+              {progress}%
+            </span>
           </div>
-          <Progress value={progress} className="mt-2 h-3 rounded-md bg-[#BEE6C0]" />
+          <Progress
+            value={progress}
+            className={`mt-2 h-2 rounded-md ${progressBarColor}`}
+          />
         </div>
       </div>
     </Link>

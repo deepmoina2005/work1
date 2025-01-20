@@ -1,6 +1,6 @@
 import GoalsCard from "@/components/card/GoalsCard";
+import ToDoTable from "@/components/ToDo/ToDoTable";
 import { ChevronDown, ChevronLeft } from "lucide-react";
-import React from "react";
 import { BsShieldLock } from "react-icons/bs";
 
 const VaultViewPage = () => {
@@ -37,6 +37,14 @@ const VaultViewPage = () => {
               <ChevronDown className="ml-1 w-[12px] mt-0.5 h-[12px]" />
             </button>
           </div>
+        </div>
+
+        <div className="mt-4">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-full border border-slate-300 max-h-min">
+        <div className="border border-slate-300 rounded-md">
+          <ToDoTable/>
+        </div>
+        </div>
         </div>
         </div>
       </div>

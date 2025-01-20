@@ -1,10 +1,9 @@
 import { GoGoal } from "react-icons/go";
-import { AiOutlinePlus } from "react-icons/ai";
-import { ArrowDownWideNarrow } from "lucide-react";
+import { ArrowDownWideNarrow, CopyPlus } from "lucide-react";
 import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import GoalsCard from '../components/card/GoalsCard';
-import CreateNewGoals from '../components/Goals/CreateNewGoals';
+import GoalsCard from "../components/card/GoalsCard";
+import CreateNewGoals from "../components/Goals/CreateNewGoals";
 import {
   Pagination,
   PaginationContent,
@@ -13,8 +12,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-
+} from "@/components/ui/pagination";
 
 const Goal = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,14 +22,79 @@ const Goal = () => {
   });
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  // Example list of goals
+  const goals = [
+    {
+      title: "Learn New Language",
+      date: "12/22/2024",
+      progress: 50,
+      priority: "high",
+      tasksCompleted: 3,
+      totalTasks: 5,
+      type: "Yearly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Achieve Fitness Goals",
+      date: "11/15/2024",
+      progress: 10,
+      priority: "medium",
+      tasksCompleted: 1,
+      totalTasks: 5,
+      type: "Monthly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Complete Project",
+      date: "10/30/2024",
+      progress: 75,
+      priority: "high",
+      tasksCompleted: 7,
+      totalTasks: 5,
+      type: "Weekly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Read 12 Books",
+      date: "12/31/2024",
+      progress: 0,
+      priority: "low",
+      tasksCompleted: 3,
+      totalTasks: 5,
+      type: "Yearly",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Travel to 5 Countries",
+      date: "09/01/2025",
+      progress: 10,
+      priority: "medium",
+      tasksCompleted: 0,
+      totalTasks: 5,
+      type: "Lifetime",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+    {
+      title: "Travel to 5 Countries",
+      date: "09/01/2025",
+      progress: 80,
+      priority: "medium",
+      tasksCompleted: 8,
+      totalTasks: 10,
+      type: "Lifetime",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam libero excepturi, omnis aliquam similique cumque facere porro officia quos at voluptate, nulla dolorem esse iusto odio maiores! Odio, tempora earum.",
+    },
+  ];
+
   const handleCreateNewGoal = () => setIsPopupOpen(true); // Open modal
-
   const handleModalClose = () => setIsPopupOpen(false); // Close modal
-
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
   const toggleSubMenu = (menuName) => {
     setSubMenuOpen((prev) => ({
       ...prev,
@@ -47,14 +110,6 @@ const Goal = () => {
           <p className="text-[25.33px] font-medium text-[#393939]">Goals</p>
         </div>
         <div className="flex items-center gap-4 relative">
-          <button
-            className="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium"
-            onClick={handleCreateNewGoal}
-          >
-            <AiOutlinePlus className="text-[20px]" />
-            <span>Create New Goal</span>
-          </button>
-
           {/* Popup Modal */}
           {isPopupOpen && (
             <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
@@ -134,38 +189,68 @@ const Goal = () => {
               </ul>
             </div>
           )}
+          <button
+            className="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium"
+            onClick={handleCreateNewGoal}
+          >
+            <CopyPlus className="text-[20px]" />
+            <span>Create Goal</span>
+          </button>
         </div>
       </div>
       <main className="px-7 mt-4">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-8">
-          <GoalsCard />
-          <GoalsCard />
-          <GoalsCard />
-          <GoalsCard />
-          <GoalsCard />
-          <GoalsCard />
+          {goals.map((goal, index) => (
+            <GoalsCard key={index} goal={goal} />
+          ))}
+        </div>
+
+        <div className="flex justify-center items-center pb-8">
+          <Pagination>
+            <PaginationContent>
+              {/* Previous Button */}
+              <PaginationItem>
+                <PaginationPrevious
+                  className="border text-[#C6C6C6] rounded-md bg-white w-[42px] h-[42px] hover:bg-[#868686] hover:text-[#C6C6C6]"
+                  href="#"
+                  aria-label="Previous Page"
+                />
+              </PaginationItem>
+
+              {/* Page Numbers */}
+              <PaginationItem>
+                {[1, 2].map((page) => (
+                  <PaginationLink
+                    key={page}
+                    className={`rounded-md border bg-white text-black w-[42px] h-[42px] hover:border-black ${
+                      page === 1
+                        ? "bg-white text-black border border-black"
+                        : ""
+                    }`}
+                    href="#"
+                  >
+                    {page}
+                  </PaginationLink>
+                ))}
+              </PaginationItem>
+
+              {/* Ellipsis */}
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+
+              {/* Next Button */}
+              <PaginationItem>
+                <PaginationNext
+                  className="border text-[#C6C6C6] rounded-md bg-white w-[42px] h-[42px] hover:bg-[#868686] hover:text-[#C6C6C6]"
+                  href="#"
+                  aria-label="Next Page"
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </main>
-      <div>
-      <Pagination>
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious className='border borer-[4px] text-[#C6C6C6] rounded-md bg-white w-[42px] h-[42px] hover:bg-[#868686] hover:text-[#C6C6C6]' href="#" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink className='rounded-md border borer-[4px] bg-white text-black hover:border-black w-[42px] h-[42px] hover:bg-white hover:text-black' href="#">1</PaginationLink>
-      <PaginationLink className='rounded-md border borer-[4px] bg-white text-black hover:border-black w-[42px] h-[42px] hover:bg-white hover:text-black' href="#">2</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationEllipsis className='rounded-md border borer-[4px] bg-white text-black hover:border-black w-[42px] h-[42px] hover:bg-white hover:text-black' />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext className='border borer-[4px] text-[#C6C6C6] rounded-md bg-white w-[42px] h-[42px] hover:bg-[#868686] hover:text-[#C6C6C6]' href="#" />
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>
-
-      </div>
     </div>
   );
 };
