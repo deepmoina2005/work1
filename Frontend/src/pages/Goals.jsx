@@ -236,7 +236,7 @@ const Goal = () => {
 
               {/* Ellipsis */}
               <PaginationItem>
-                <PaginationEllipsis />
+                <PaginationEllipsis className="bg-white" />
               </PaginationItem>
 
               {/* Next Button */}
