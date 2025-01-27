@@ -107,7 +107,7 @@ const GoalsTable = () => {
 
   return (
     <Tabs defaultValue="to-dos" className="w-full mr-6">
-      <TabsList className="grid w-[200px] grid-cols-2">
+      <TabsList className="grid lg:w-[200px] grid-cols-2">
         <TabsTrigger value="to-dos">To-dos</TabsTrigger>
         <TabsTrigger value="memories">Memories</TabsTrigger>
       </TabsList>
@@ -196,6 +196,7 @@ const GoalsTable = () => {
           </div>
         </Card>
       </TabsContent>
+      
       <TabsContent value="memories">
       <Card>
           <div className="px-6 py-3">

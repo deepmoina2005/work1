@@ -1,5 +1,5 @@
+import CreateVaults from "@/components/card/CreateVault";
 import VaultsCard from "@/components/card/VaultsCard";
-import React from "react";
 import { BsShieldLock } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const vaultsData = [
 
 const Vaults = () => {
   return (
-    <div className="mt-2 ml-4 mr-4 mb-3 w-full">
+    <div className="w-full mr-6">
       {/* Header */}
       <div className="flex justify-between items-center mt-6">
         <div className="flex items-center gap-2">
@@ -41,6 +41,8 @@ const Vaults = () => {
             />
           </NavLink>
         ))}
+
+        <CreateVaults/>
       </div>
     </div>
   );

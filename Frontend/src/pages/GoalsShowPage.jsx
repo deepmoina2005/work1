@@ -8,7 +8,7 @@ import { MdArrowForwardIos } from 'react-icons/md'
 const GoalsShowPage = () => {
 
   return (
-    <div className='m-2 min-h-screen bg-white rounded-sm'>
+    <div className='min-h-screen bg-white rounded-sm'>
       <div className="flex items-center gap-2">
         <div className='flex items-center gap-2 mt-6 ml-6'>
           <GoGoal className="w-[19px] h-[19px]" />

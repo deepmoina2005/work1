@@ -95,7 +95,7 @@ const VaultViewPage = () => {
     setShowTodoAndMemories(!showTodoAndMemories);
 
   return (
-    <div className="m-4 mb-5">
+    <div>
       <div className="flex items-center gap-2 px-4 py-4">
         <button
           className="flex-row flex gap-2 items-center"

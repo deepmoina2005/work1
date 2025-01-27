@@ -88,53 +88,6 @@ const CreateNewGoals = ({ onClose }) => {
 
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Start Date
-        </label>
-        <input
-          type="text"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          className="w-full border border-gray-300 rounded-md p-2"
-          placeholder="Enter your due date"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          To-dos for this Goal
-        </label>
-        <input
-          type="text"
-          placeholder="Add a to-do"
-          value=""
-          onKeyPress={(e) => {
-            if (e.key === "Enter" && e.target.value) {
-              setToDos([...toDos, e.target.value]);
-              e.target.value = "";
-            }
-          }}
-          className="w-full border border-gray-300 rounded-md p-2 mb-2"
-        />
-        <div className="flex flex-wrap gap-2">
-          {toDos.map((todo, index) => (
-            <span
-              key={index}
-              className="inline-flex items-center px-2 py-1 bg-gray-200 rounded-md text-sm"
-            >
-              {todo}
-              <button
-                className="ml-2 text-gray-500 hover:text-red-500"
-                onClick={() => setToDos(toDos.filter((_, i) => i !== index))}
-              >
-                &times;
-              </button>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
           Goal Priority
         </label>
         <select
@@ -149,16 +102,7 @@ const CreateNewGoals = ({ onClose }) => {
         </select>
       </div>
 
-      <div className="flex justify-between gap-2 mt-10">
-        {/* Align "Add Reminder for Task" button to the left */}
-        <button
-          onClick={() => setIsReminderPopupOpen(true)} // Open reminder popup
-          className="text-sm font-medium text-gray-700 flex items-center gap-2 mt-3"
-        >
-          <FaBell size={16} /> {/* Bell icon */}
-          Add Reminder for Task
-        </button>
-
+      <div className="flex gap-2 mt-10">
         <div className="flex gap-2">
           <button
             onClick={onClose}

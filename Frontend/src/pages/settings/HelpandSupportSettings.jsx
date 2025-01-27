@@ -24,7 +24,7 @@ const HelpandSupportSettings = () => {
         </div>
 
         {/* FAQ */}
-        <div>
+        <div className="flex w-[1080px]">
           <Accordion type="single" collapsible className="w-full">
             <div className="flex flex-col gap-2.5">
             <div className="border rounded-md shadow-none bg-white">
@@ -92,16 +92,16 @@ const HelpandSupportSettings = () => {
         </div>
 
         {/* SubsCribe */}
-        <div className="flex flex-row gap-40 w-full h-[139px] bg-[#393939] rounded-md mt-44">
-          <div className="flex flex-col m-6 mt-11 mb-11">
+        <div className="flex flex-row gap-96 w-full h-[200px] bg-[#393939] rounded-md mt-10">
+          <div className="flex flex-col m-6 mt-20 mb-11">
             <h1 className="text-white text-[18px]">Join 2k+ Subscribers</h1>
             <p className="text-[12px] text-white">Stay in loop with every thing you need to know.</p>
           </div>
 
-          <div className="mt-7 mb-7">
+          <div className="mt-16 mb-7">
             <p className="text-[12px] text-white">Email</p>
             <div className="flex flex-row gap-2">
-            <Input className="bg-white rounded-md"/>
+            <Input className="bg-white rounded-md w-64"/>
             <Button className="bg-black text-white">Subscribe</Button>
             </div>
             <p className="text-[12px] text-white">Enter your email address</p>

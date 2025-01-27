@@ -103,7 +103,7 @@ const Goal = () => {
   };
 
   return (
-    <div className="mt-4">
+    <div>
       <div className="flex justify-between items-center px-7 py-4">
         <div className="flex items-center gap-2">
           <GoGoal className="text-[25.33px]" />

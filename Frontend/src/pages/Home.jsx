@@ -59,7 +59,7 @@ const Home = () => {
   const handleModalClose = () => setIsPopupOpen(false); // Close modal
 
   return (
-    <div className="m-8">
+    <div>
       {/* Greeting Section */}
       <div className="flex flex-col items-start gap-1">
         <p className="text-[24px] font-medium text-[#393939]">
@@ -121,9 +121,9 @@ const Home = () => {
       )}
 
       {/* Pending Todo, Complete Todos, Complete Goal Card */}
-      <div className="flex flex-row gap-4 mt-8">
+      <div className="flex lg:flex-row flex-col gap-4 mt-8">
         {/* Pending Todos Card */}
-        <div className="flex flex-col bg-white rounded-lg shadow-md w-1/3 h-[160px]">
+        <div className="flex flex-col bg-white rounded-lg shadow-md lg:w-1/3 h-[160px]">
           <h1 className="text-[24px] font-semibold ml-4 mt-2 text-gray-800">
             Pending Todos
           </h1>
@@ -132,7 +132,7 @@ const Home = () => {
         </div>
 
         {/* Complete Todos Card */}
-        <div className="flex flex-col bg-white rounded-lg shadow-md w-1/3 h-[160px]">
+        <div className="flex flex-col bg-white rounded-lg shadow-md lg:w-1/3 h-[160px]">
           <h1 className="text-[24px] font-semibold ml-4 mt-2 text-gray-800">
             Completed Todos
           </h1>
@@ -141,7 +141,7 @@ const Home = () => {
         </div>
 
         {/* Completed Goals Card */}
-        <div className="flex flex-col bg-white rounded-lg shadow-md w-1/3 h-[160px]">
+        <div className="flex flex-col bg-white rounded-lg shadow-md lg:w-1/3 h-[160px]">
           <h1 className="text-[24px] font-semibold ml-4 mt-2 text-gray-800">
             Completed Goals
           </h1>

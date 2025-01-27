@@ -1,72 +1,65 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import MobileMenu from './components/MobileMenu';
 
-// Lazy loading components
-const Home = React.lazy(() => import('./pages/Home'));
-const Goals = React.lazy(() => import('./pages/Goals'));
-const FindMemory = React.lazy(() => import('./pages/Memories/FindMemory'));
-const AddNewMemory = React.lazy(() => import('./pages/Memories/AddNewMemory'));
-const ToDoLists = React.lazy(() => import('./pages/ToDoLists'));
-const Archive = React.lazy(() => import('./pages/Archive'));
-const Settings = React.lazy(() => import('./pages/settings/Settings'));
-const Insight = React.lazy(() => import('./pages/Insight'));
-const Subscription = React.lazy(() => import('./pages/Subscription'));
-const Vaults = React.lazy(() => import('./pages/Vaults'));
-const GoalsShowPage = React.lazy(() => import('./pages/GoalsShowPage'));
-const VaultViewPage = React.lazy(() => import('./pages/VaultViewPage'));
-const Memories = React.lazy(() => import('./pages/Memories'));
+// Import all components directly (no lazy loading)
+import Home from './pages/Home';
+import Goals from './pages/Goals';
+import FindMemory from './pages/Memories/FindMemory';
+import AddNewMemory from './pages/Memories/AddNewMemory';
+import ToDoLists from './pages/ToDoLists';
+import Archive from './pages/Archive';
+import Settings from './pages/settings/Settings';
+import Insight from './pages/Insight';
+import Subscription from './pages/Subscription';
+import Vaults from './pages/Vaults';
+import GoalsShowPage from './pages/GoalsShowPage';
+import VaultViewPage from './pages/VaultViewPage';
+import Memories from './pages/Memories';
 // Settings Pages
-const AccountSettings = React.lazy(() => import('./pages/settings/AccountSettings'));
-const SubcriptionManagmentSettings = React.lazy(() => import('./pages/settings/SubcriptionManagmentSettings'));
-const NotificationsSettings = React.lazy(() => import('./pages/settings/NotificationsSettings'));
-const PerferencesSettings = React.lazy(() => import('./pages/settings/PerferencesSettings'));
-const PrivacySecuritySettings = React.lazy(() => import('./pages/settings/PrivacySecuritySettings'));
-const HelpandSupportSettings = React.lazy(() => import('./pages/settings/HelpandSupportSettings'));
+import AccountSettings from './pages/settings/AccountSettings';
+import SubcriptionManagmentSettings from './pages/settings/SubcriptionManagmentSettings';
+import NotificationsSettings from './pages/settings/NotificationsSettings';
+import PerferencesSettings from './pages/settings/PerferencesSettings';
+import PrivacySecuritySettings from './pages/settings/PrivacySecuritySettings';
+import HelpandSupportSettings from './pages/settings/HelpandSupportSettings';
 
 const App = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const toggleSidebar = () => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+  };
 
   return (
-    <div className="bg-[#F3F3F3] min-h-screen flex">
-      {/* Conditionally render Sidebar or MobileMenu */}
-      {isMobile ? <MobileMenu /> : <Sidebar />}
+    <div className="min-h-screen flex lg:bg-[#F3F3F3]">
+      {/* Sidebar */}
+      <Sidebar isExpanded={isSidebarExpanded} toggleSidebar={toggleSidebar} />
 
       {/* Main content area */}
-      <div className={`flex flex-1 ${isMobile ? '' : 'ml-64'}`}>
-        <Suspense fallback={<div className="text-center">Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/vaults" element={<Vaults />} />
-            <Route path="/goals-view" element={<GoalsShowPage />} />
-            <Route path="/goals" element={<Goals />} />
-            <Route path="/find-memory" element={<FindMemory />} />
-            <Route path="/add-new-memory" element={<AddNewMemory />} />
-            <Route path="/memories" element={<Memories />} />
-            <Route path="/todo-lists" element={<ToDoLists />} />
-            <Route path="/archive" element={<Archive />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/vault-view" element={<VaultViewPage />} />
-            <Route path="/insight" element={<Insight />} />
-            <Route path="/subscription" element={<Subscription />} />
-            {/* Settings Sub-Routes */}
-            <Route path="/settings-account" element={<AccountSettings />} />
-            <Route path="/settings-subscription" element={<SubcriptionManagmentSettings />} />
-            <Route path="/settings-notification" element={<NotificationsSettings />} />
-            <Route path="/settings-preference" element={<PerferencesSettings />} />
-            <Route path="/settings-privacy" element={<PrivacySecuritySettings />} />
-            <Route path="/settings-help" element={<HelpandSupportSettings />} />
-          </Routes>
-        </Suspense>
+      <div className={`flex flex-1 ${isSidebarExpanded ? 'ml-72' : 'ml-28'} lg:bg-[#F3F3F3] transition-all duration-300`}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/vaults" element={<Vaults />} />
+          <Route path="/goals-view" element={<GoalsShowPage />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/find-memory" element={<FindMemory />} />
+          <Route path="/add-new-memory" element={<AddNewMemory />} />
+          <Route path="/memories" element={<Memories />} />
+          <Route path="/todo-lists" element={<ToDoLists />} />
+          <Route path="/archive" element={<Archive />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/vault-view" element={<VaultViewPage />} />
+          <Route path="/insight" element={<Insight />} />
+          <Route path="/subscription" element={<Subscription />} />
+          {/* Settings Sub-Routes */}
+          <Route path="/settings-account" element={<AccountSettings />} />
+          <Route path="/settings-subscription" element={<SubcriptionManagmentSettings />} />
+          <Route path="/settings-notification" element={<NotificationsSettings />} />
+          <Route path="/settings-preference" element={<PerferencesSettings />} />
+          <Route path="/settings-privacy" element={<PrivacySecuritySettings />} />
+          <Route path="/settings-help" element={<HelpandSupportSettings />} />
+        </Routes>
       </div>
     </div>
   );
