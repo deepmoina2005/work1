@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoGoal } from "react-icons/go";
 import { LuListTodo } from "react-icons/lu";
@@ -103,7 +104,7 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
     {
       name: "Coach Becky",
       icon: (
-        <span className="text-[28px]">
+        <span className="text-[36px]">
           <Bot />
         </span>
       ),
@@ -117,41 +118,49 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-full bg-white shadow-lg ${
+      className={`fixed rounded-md h-full bg-white shadow-lg ${
         isExpanded ? "w-64" : "w-20"
-      } transition-all duration-300`}
+      } flex flex-col justify-between transition-all duration-300`}
     >
       {/* Sidebar Header */}
       <div
-        className={`px-4 flex items-center mt-3 ${
-          isExpanded ? "justify-start" : "justify-center"
+        className={`px-4 flex items-center mt-4 ${
+          isExpanded ? "justify-start ml-2" : "justify-center"
         }`}
       >
         <button
           onClick={toggleSidebar}
           className="text-gray-600 hover:text-black transition-colors"
         >
-          {isExpanded ? <span className="text-[20px]"><CircleArrowLeft /></span> : <span className="text-[20px]"><CircleArrowRight /></span>}
+          {isExpanded ? (
+            <span className="text-[20px]">
+              <CircleArrowLeft />
+            </span>
+          ) : (
+            <span className="text-[20px]">
+              <CircleArrowRight />
+            </span>
+          )}
         </button>
       </div>
 
-      <div className="px-4 flex items-center justify-center mt-4">
+      <div className="flex items-center justify-center mt-5">
         <div className="flex items-center space-x-4">
           <img
             src="https://image.lexica.art/full_webp/0141d1f8-c79e-45da-8644-08f40a167e2f"
             alt="User Avatar"
             className={`rounded-full object-cover ${
-              isExpanded ? "w-9 h-9" : "w-9 h-9"
+              isExpanded ? "w-11 h-11" : "w-11 h-11"
             }`}
           />
           {isExpanded && (
-            <div className="flex flex-raw gap-2">
-              <span>
-              <h3 className="text-[16px] font-semibold">Sourabh Ghosh</h3>
-              <p className="text-[12px] text-gray-600">sourabh34@gmail.com</p>
+            <div className="flex flex-row items-center">
+              <span className="flex flex-col">
+                <h3 className="text-[16px] font-semibold">Sourabh Ghosh</h3>
+                <p className="text-[12px] text-gray-600">sourabh34@gmail.com</p>
               </span>
-              <span className="items-center justify-between mt-2">
-              <Bell/>
+              <span className="w-8 h-8 ml-2 flex items-center justify-center">
+                <Bell />
               </span>
             </div>
           )}
@@ -161,8 +170,8 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
       {/* Search Bar */}
       <div className="flex items-center justify-center mt-3">
         {isExpanded ? (
-          <div className="flex items-center border border-slate-300 rounded-md">
-            <IoIosSearch className="text-gray-500" />
+          <div className="flex items-center border w-56 h-9 border-slate-300 rounded-md">
+            <IoIosSearch className="text-gray-500 text-[24px] ml-2" />
             <input
               type="text"
               placeholder="Search..."
@@ -179,8 +188,12 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
       </div>
 
       {/* Menu */}
-      <nav className="flex-grow overflow-auto mt-3 justify-center">
-        <div className={`space-y-2 px-4 ${!isExpanded && "px-2"}`}>
+      <div className="flex-grow overflow-auto mt-3 justify-center">
+        <div
+          className={`space-y-2 px-4 ${
+            !isExpanded && "items-center flex flex-col justify-center w-auto"
+          }`}
+        >
           {filteredMenuItems.map((item) => {
             const isActiveParent =
               location.pathname === item.link ||
@@ -207,6 +220,7 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
                       </span>
                       {isExpanded && (
                         <span
+                        className="ml-16"
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleSubmenu(item.name);
@@ -232,12 +246,12 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
                               subItem.textClass || ""
                             } ${
                               location.pathname === subItem.link
-                                ? "bg-[#F3F3F3] font-semibold"
+                                ? "bg-[#F3F3F3] font-semibold text-gray-500"
                                 : ""
                             }`}
                           >
                             {subItem.icon}
-                            <span className="text-[28px]">{subItem.name}</span>
+                            <span className="text-[14px]">{subItem.name}</span>
                           </Link>
                         ))}
                       </div>
@@ -260,9 +274,35 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
             );
           })}
         </div>
-      </nav>
+      </div>
+
+      {/* Footer */}
+      <div className="px-2">
+        <div className="flex items-end justify-center pb-4 border-t">
+          <div className="flex items-center space-x-4 flex-row mt-2 justify-center">
+            <img
+              src="https://image.lexica.art/full_webp/0141d1f8-c79e-45da-8644-08f40a167e2f"
+              alt="User Avatar"
+              className={`rounded-full object-cover ${
+                isExpanded ? "w-6 h-6" : "w-6 h-6"
+              }`}
+            />
+            {isExpanded && (
+              <footer className="flex flex-row gap-2">
+                <span>
+                  <p className="text-black font-semibold">Hey Becky</p>
+                </span>
+              </footer>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
+};
+Sidebar.propTypes = {
+  isExpanded: PropTypes.bool.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

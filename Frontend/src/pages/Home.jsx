@@ -59,7 +59,7 @@ const Home = () => {
   const handleModalClose = () => setIsPopupOpen(false); // Close modal
 
   return (
-    <div>
+    <div className="p-4">
       {/* Greeting Section */}
       <div className="flex flex-col items-start gap-1">
         <p className="text-[24px] font-medium text-[#393939]">
@@ -183,9 +183,9 @@ const Home = () => {
       </div>
 
       {/* Top Goals For Today */}
-      <div className="bg-white rounded-md mt-8 p-4 shadow-md">
+      <div className="bg-white rounded-md mt-8 p-4 lg:shadow-md border">
         <div className="border-b border-gray-300 pb-2 items-center justify-between flex">
-          <h1 className="text-black text-[20px] font-semibold">
+          <h1 className="text-black lg:text-[20px] text-sm font-semibold">
             Top Goals for Today
           </h1>
           <div className="flex flex-row justify-between mb-2">
@@ -200,12 +200,12 @@ const Home = () => {
               className="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium"
               onClick={handleCreateNewGoal}
             >
-              <CopyPlus className="text-[20px]" />
+              <CopyPlus className="lg:text-[20px] text-sm" />
               <span>Create Goal</span>
             </button>
           </div>
         </div>
-        <div className="px-7 mt-4 mb-2">
+        <div className="lg:px-7 mt-4 mb-2">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-8">
             {goals.map((goal, index) => (
               <GoalsCard key={index} goal={goal} />

@@ -13,7 +13,7 @@ const vaultsData = [
 
 const Vaults = () => {
   return (
-    <div className="w-full mr-6">
+    <div className="w-full p-4">
       {/* Header */}
       <div className="flex justify-between items-center mt-6">
         <div className="flex items-center gap-2">
